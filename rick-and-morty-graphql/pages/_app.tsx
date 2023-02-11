@@ -1,6 +1,16 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+//* CONFIG DEL ENTERNO, PERMITE CONSUMIR CUALQUIER QUERY A PARTIR DE CUALQUIER COMPONENTE QUE ESTEMOS UTILIZANDO
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import client from "@/apollo/client";
+import "@/styles/globals.css";
+import { ApolloProvider } from "@apollo/client";
+import type { AppProps } from "next/app";
+
+function App({ Component, pageProps }: AppProps) {
+    return (
+        <ApolloProvider client={client}>
+            <Component {...pageProps} />
+        </ApolloProvider>
+    );
 }
+
+export default App;
